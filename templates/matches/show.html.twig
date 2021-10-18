@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matches{% endblock %}
+
+{% block body %}
+    <h1>Matches</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ match.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ match.date ? match.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Command1</th>
+                <td>{{ match.command1 }}</td>
+            </tr>
+            <tr>
+                <th>Command2</th>
+                <td>{{ match.command2 }}</td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td>{{ match.place }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('matches_index') }}">back to list</a>
+
+    <a href="{{ path('matches_edit', {'id': match.id}) }}">edit</a>
+
+    {{ include('matches/_delete_form.html.twig') }}
+{% endblock %}

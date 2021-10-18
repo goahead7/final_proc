@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SEARCH PLAYERS OF ROLE {% endblock %}
+
+{% block body %}
+    <style class = "styler">
+    .search{margin: 10px; max-width: 600px; width: 100%; font: 20px/1.5 "Helvetica"; background: aqua }
+    </style>
+    <div class="search">
+        <h1>SEARCH FOOTBALL PLAYERS</h1>
+        <form  action="{{ path('players_search') }}" method="get">
+            <input type="search" aria-label="Search" name="role">
+            <button class="btn" type="submit">Search</button>
+        </form>
+
+    <h3>"attack", "midfielder", "winger", "goalkeeper"</h3>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Fio</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.fio }}</td>
+                <td>{{ player.role }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td>NO PLAYERS OF THIS ROLE </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
